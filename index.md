@@ -1,37 +1,123 @@
-## Welcome to GitHub Pages
+# CMP2241_Task 3 --> Const and & Report
 
-You can use the [editor on GitHub](https://github.com/MariamHossam01/Mariam.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## A) Usage of _const_ keyword
 
-### Markdown
+### 1- Constant Variables 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+To make a variable constant. The variable need to be initialized.
 
-```markdown
-Syntax highlighted code block
+If you make any variable as constant, using const keyword, you cannot change its value.
 
-# Header 1
-## Header 2
-### Header 3
+```
+const int x = 1;
+```
+### 2- Pointers 
 
-- Bulleted
-- List
+To point to a const variable. 
 
-1. Numbered
-2. List
+```
+const int* l;
+int const* l; // same meaning
+```
+or to have a constant address but variable data.  
+```
+int x = 1;
+int* const w = &x; 
+```
+### 3-  const Function Arguments and Return types\
 
-**Bold** and _Italic_ and `Code` text
+We can make the return type or arguments of a function as const. so we cannot change any of them.
 
-[Link](url) and ![Image](src)
+```
+void f(const int i) // const argument
+{
+   ...
+}
+
+const int g() //const return
+{
+    return 1;
+}
+```
+### 4- Defining Class Data members as const
+
+To define data variables as constants without initializing them. 
+They would be initialized during constructor calling.     
+```
+class con
+{
+const int i;
+public:
+con(int x):i(x)
+{
+cout << i;
+}
+};
+
+int main()
+{
+con t(10);
+con x(20);
+}
+O/P:1020
+```
+### 5- Defining Class Object as const
+To define an object such that it's data can never change.
+
+### 6-  Defining Class's Member function as const
+
+```
+return_type function_name() const;
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
+## B) Usage of _&_ operator
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MariamHossam01/Mariam.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 1- declaring a reference to a type
+When used in the left-hand side of the variable declaration,a reference of the declared variable is expected. 
 
-### Support or Contact
+```
+int  z=9;
+int& x = z; // both  variables point to the same address and therfor value
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### 2- To get the address of a variable
+
+When used in the right-hand side of the variable declaration,it can be used in variable assignments
+it's useful in pointers as when it's used it will return the address instead of the value. 
+
+```
+int z=9;
+int* x;
+x = &z; // x is a pointer that points to z
+```
+### 3- bitwise operator
+
+
+It is the bitwise AND.Which means it takes 2 numbers as inputs and do AND
+operation on each bit.
+
+
+|       | 8       | 4     | 2      |0      |
+|-------|--------|-------|--------|--------|
+| 10    |      1 |      0|       1|       0|
+| 3     |      0 |      0|       1|       1|
+|10&3= 2|      0 |      0|       1|       0|
+
+```
+cout<<(10&3); // O/P: 2
+```
+### 4- logical expression
+
+Used as the AND operator when used as double ampersands **'&&'**. 
+
+### 5- declaring rvalue references
+
+rvalue are values which are not saved in the memory unlike the lvalues
+```
+string l = "hello" // l is a lvalue whereas "hello" is a rvalue  
+```
+### 6- declaring universal references
+
+### 7- function overloading
