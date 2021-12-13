@@ -118,6 +118,26 @@ rvalue are values which are not saved in the memory unlike the lvalues
 ```
 string l = "hello" // l is a lvalue whereas "hello" is a rvalue  
 ```
+
+Although rvalues can only appear on the right-hand side, still one can capture references to them. Those "captures" are called rvalue references and such variables have to be declared with double ampersands (&&). 
+
+
 ### 6- declaring universal references
 
+
+```
+Vehicle car;
+auto&& car2 = car; // universal reference
+Vehicle&& car3 = car; //  rvalue reference
+```
+
 ### 7- function overloading
+
+ you can use both the single and double ampersands as part of the function signature, but not part of the parameter list.
+ 
+ ```
+ void doSomething() &;
+void doSomething() &&;
+auto doSomethingElse() & -> int;
+auto doSomethingElse() && -> int;
+```
